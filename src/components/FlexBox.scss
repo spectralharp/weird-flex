@@ -16,6 +16,7 @@ $axis-size: 24px;
 
 .camouflage {
   pointer-events: none;
+  user-select: none;
   position: absolute;
   left:   0;
   right:  0;
@@ -26,10 +27,13 @@ $axis-size: 24px;
 h2.camouflage {
   font-family: var.$title-font-family;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p.camouflage {
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
 img.camouflage {

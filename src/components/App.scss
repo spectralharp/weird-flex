@@ -33,10 +33,31 @@ button {
 .btn {
   box-sizing: border-box;
   background-color: var.$blue;
-  border: 1px solid transparent;
   color: var.$light;
   padding: 0.5rem 1rem;
   font-size: 1rem;
+
+  &:disabled {
+    background-color: var.$silver;
+    color: var.$light;
+    cursor: not-allowed;
+
+    &:disabled:hover {
+      background-color: var.$silver;
+      color: var.$light;
+    }
+  }
+
+  &-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    & .btn {
+      margin: 0 2px;
+      flex: 1 1 max-content;
+    }
+  }
 
   &:hover {
     background-color: var.$dark-blue;
@@ -45,19 +66,17 @@ button {
 
   &--danger {
     @extend .btn;
-    background-color: var.$light;
-    color: var.$red;
-    border: 1px solid var.$red;
-
+    background-color: var.$red;
+    color: var.$light;
 
     &:hover {
-      background-color: var.$red;
+      background-color: var.$dark-red;
       color: var.$light;
     }
   }
 }
 
-.tag {
+.mark {
   color: var.$light;
   background-color: var.$dark;
   padding: 2px 5px;
@@ -65,12 +84,12 @@ button {
   border-radius: 2px;
 
   &--red {
-    @extend .tag;
+    @extend .mark;
     background-color: var.$red;
   }
 
   &--blue {
-    @extend .tag;
+    @extend .mark;
     background-color: var.$blue;
   }
 }
@@ -325,4 +344,10 @@ option {
   border-left: 2px solid var.$silver;
   margin-left: 4px;
   padding-left: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+  }
 }

@@ -24,9 +24,9 @@
   }
 }
 
-.property {
+.flex-property {
   box-sizing: border-box;
-  font-family: inherit;
+  font-family: var.$monospace-font-family;
   font-size: 1rem;
   border: 1px solid var.$dark;
   background-color: var.$light;
