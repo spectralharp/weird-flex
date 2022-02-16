@@ -16,27 +16,6 @@ export default function BoxSettingsPanel({ treeOp, activeNodeKey, activeBox }) {
         Apply settings on the active box
       </p>
 
-      <h3 className="title--group">Actions</h3>
-      <div>
-        <button
-          className='btn'
-          onClick={() => treeOp.addChildNode(activeNodeKey)}
-        >
-          <FontAwesomeIcon icon={faPlus} /> Add Item
-        </button>
-        <button
-          className='btn'
-          onClick={() => treeOp.duplicateNode(activeNodeKey)}
-        >
-          <FontAwesomeIcon icon={faClone} /> Duplicate
-        </button>
-        <button
-          className='btn--danger'
-          onClick={() => treeOp.removeNode(activeNodeKey)}>
-          <FontAwesomeIcon icon={faTrashAlt} /> Delete
-        </button>
-      </div>
-
       <h3 className="title--group">Box Size</h3>
 
       <div className="size-edit">
@@ -83,8 +62,31 @@ export default function BoxSettingsPanel({ treeOp, activeNodeKey, activeBox }) {
         </div>
       </div>
 
+      <h3 className="title--group">Actions</h3>
+      <div className='btn-group'>
+        <button
+          className='btn'
+          onClick={() => treeOp.addChildNode(activeNodeKey)}
+        >
+          <FontAwesomeIcon icon={faPlus} /> Add Item
+        </button>
+        <button
+          disabled={activeNodeKey === '0'}
+          className='btn'
+          onClick={() => treeOp.duplicateNode(activeNodeKey)}
+        >
+          <FontAwesomeIcon icon={faClone} /> Duplicate
+        </button>
+        <button
+          disabled={activeNodeKey === '0'}
+          className='btn--danger'
+          onClick={() => treeOp.removeNode(activeNodeKey)}>
+          <FontAwesomeIcon icon={faTrashAlt} /> Delete
+        </button>
+      </div>
+
       <h3 className="title--group">Mockup</h3>
-      <label>Type</label>
+      <label className="title--group">Type</label>
       <select
         value={camouflage ? camouflage : ''}
         onChange={(e) => setField({ camouflage: e.currentTarget.value })}
