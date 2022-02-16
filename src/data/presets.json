@@ -1,0 +1,98 @@
+{
+  "default": {
+    "name": "Default",
+    "tree": {
+      "width": 600,
+      "height": 600,
+      "style": {},
+      "nodes": [
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    }
+  },
+  "recursion": {
+    "name": "Recursion",
+    "tree": {
+      "width": 600,
+      "height": 600,
+      "style": {
+        "display": "block",
+        "flexWrap": "wrap",
+        "justifyContent": "flex-start",
+        "flexDirection": "column",
+        "alignItems": "center"
+      },
+      "nodes": [
+        {
+          "nodes": [
+            {
+              "nodes": [
+                {
+                  "width": 200,
+                  "height": 72,
+                  "camouflage": "title"
+                },
+                {
+                  "camouflage": "image",
+                  "width": 72,
+                  "height": 72
+                }
+              ],
+              "style": {
+                "display": "flex",
+                "alignItems": "center"
+              }
+            }
+          ]
+        },
+        {
+          "nodes": [
+            {
+              "width": 180,
+              "height": 180
+            },
+            {
+              "width": 320,
+              "height": 420,
+              "nodes": [
+                {
+                  "nodes": [
+                    {
+                      "height": 72,
+                      "camouflage": "image"
+                    },
+                    {
+                      "height": 72,
+                      "camouflage": "image"
+                    },
+                    {
+                      "camouflage": "image",
+                      "height": 72
+                    }
+                  ],
+                  "style": {
+                    "display": "flex",
+                    "alignItems": "center"
+                  }
+                },
+                {
+                  "camouflage": "paragraph",
+                  "height": 240
+                }
+              ]
+            }
+          ],
+          "style": {
+            "display": "flex",
+            "justifyContent": "space-evenly",
+            "alignItems": "center"
+          }
+        }
+      ]
+    }
+  }
+}

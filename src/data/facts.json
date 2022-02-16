@@ -1,0 +1,31 @@
+[
+  {
+    "content": "<mark className=\"mark--red\">flex-flow</mark> directions are writing mode sensitive",
+    "example": {
+      "name": "Default",
+      "tree": {
+        "width": 600,
+        "height": 600,
+        "style": {},
+        "nodes": [
+          {
+            "nodes": [
+              {},
+              {},
+              {}
+            ],
+            "style": { "flexDirection": "row", "flexWrap": "wrap"}
+          },
+          {
+            "nodes": [
+              {},
+              {},
+              {}
+            ],
+            "style": { "flexDirection": "row", "flexWrap": "wrap", "writingMode": "vertical-rl"}
+          }
+        ]
+      }
+    }
+  }
+]
