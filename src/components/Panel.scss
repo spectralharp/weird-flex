@@ -1,0 +1,36 @@
+@use '../style/variables' as var;
+
+.toggle-group {
+
+  display: flex;
+
+  input {
+    margin-right: 0.5rem;
+  }
+
+  &--desc {
+    @extend .toggle-group;
+    color: var.$silver;
+  }
+}
+
+.size-edit {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    margin-top: 1rem;
+    margin-right: 2rem;
+  }
+}
+
+.property {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid var.$dark;
+  background-color: var.$light;
+  display: block;
+  color: var.$dark;
+  padding: .5rem;
+}

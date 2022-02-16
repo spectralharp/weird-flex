@@ -1,0 +1,255 @@
+@use '../style/variables' as var;
+
+$axis-size: 24px;
+
+.abs {
+  position: absolute!important;
+}
+
+.fix {
+  position: fixed!important;
+}
+
+.root, .dummy {
+  margin: 2rem;
+}
+
+.camouflage {
+  pointer-events: none;
+  position: absolute;
+  left:   0;
+  right:  0;
+  top:    0;
+  bottom: 0;
+}
+
+h2.camouflage {
+  font-family: var.$title-font-family;
+  text-align: center;
+}
+
+p.camouflage {
+  padding: 1rem;
+}
+
+img.camouflage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.flexbox {
+  box-sizing: border-box;
+
+  position: relative;
+
+  min-width:  $axis-size * 3;
+  min-height: $axis-size * 3;
+
+  max-width:  calc(100vw - 4rem);
+
+  overflow: hidden;
+  background-color: var.$darker;
+
+  color: var.$light;
+
+  border: 4px solid var.$silver;
+
+  transition: box-shadow ease-out 0.1s, padding ease-out 0.1s;
+
+  cursor: pointer;
+
+  font-size: 18pt;
+
+  &.active {
+    background-color: var.$dark;
+    border: 4px solid var.$blue;
+    box-shadow: inset 0 0 0 3px var.$light;
+    padding: $axis-size 0 0 $axis-size;
+
+    resize: both;
+  }
+
+  &__horizontal , &__vertical, &__remove-btn {
+    position: absolute;
+    transition: transform ease-out 0.1s;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var.$title-font-family;
+    text-align: center;
+    background-color: var.$darker;
+
+    overflow: hidden;
+  }
+
+  &__horizontal , &__vertical {
+    pointer-events: none;
+  }
+
+  &__horizontal {
+    box-sizing: border-box;
+    left: $axis-size;
+    right: 0;
+    top: 0;
+    height: $axis-size;
+    border-bottom: 2px solid var.$darker;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  &__vertical {
+    box-sizing: border-box;
+    left: 0;
+    top: $axis-size;
+    bottom: 0;
+    width: $axis-size;
+    border-right: 2px solid var.$darker;
+    transform: scaleX(0);
+    transform-origin: left;
+
+    writing-mode: vertical-rl;
+  }
+
+  &__remove-btn {
+    left: 0;
+    top: 0;
+    height: $axis-size;
+    width: $axis-size;
+    z-index: 1;
+    transform: translateY(-$axis-size);
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:hover {
+      color: var.$red;
+    }
+  }
+
+  &.active > &__remove-btn {
+    transform: none;
+  }
+
+  &.active > &__horizontal {
+    transform: none;
+  }
+
+  &.active > &__vertical {
+    transform: none;
+  }
+
+  &.active > & {
+
+    &:nth-child(even) {
+      background-color: var.$red;
+    }
+
+    &:nth-child(odd) {
+      background-color: var.$blue;
+
+    }
+
+    &:nth-child(even)::after {
+      background-color: var.$red;
+    }
+
+    &:nth-child(odd)::after {
+      background-color: var.$blue;
+
+    }
+
+    &::after {
+      content: attr(data-index);
+
+      box-sizing: border-box;
+
+      font-size: 24px;
+
+      position: absolute;
+      padding: 5px 10px;
+      border-radius: 5px;
+      bottom: 0;
+      right: 0;
+
+      pointer-events: none;
+    }
+  }
+}
+
+.main-axis {
+  background-color: var.$red;
+}
+
+.cross-axis {
+  background-color: var.$blue;
+}
+
+
+.axis__label {
+  background-color: inherit;
+  white-space: nowrap;
+  padding: 5px;
+  z-index: 1;
+}
+
+.scroll-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.left {
+  width: 200%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M 24 7 L 19 12 L 24 17 L 24 7 Z' fill='white'/></svg>");
+  background-repeat: repeat-x;
+  animation: toLeft 20s linear infinite;
+}
+
+.right {
+  width: 200%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M 0 7 L 5 12 L 0 17 L 0 7 Z' fill='white'/></svg>");
+  background-repeat: repeat-x;
+  animation: toRight 20s linear infinite;
+}
+
+.up {
+  width: 100%;
+  height: 200%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M 7 24 L 12 19 L 17 24 L 7 24 Z' fill='white'/></svg>");
+  background-repeat: repeat-y;
+  animation: toUp 20s linear infinite;
+}
+
+.down {
+  width: 100%;
+  height: 200%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M 7 0 L 12 5 L 17 0 L 7 0 Z' fill='white'/></svg>");
+  background-repeat: repeat-y;
+  animation: toDown 20s linear infinite;
+}
+
+@keyframes toLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes toRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes toUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes toDown {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+
