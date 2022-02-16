@@ -4,10 +4,10 @@ import { faTrashAlt, faThumbtack } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useBounds } from '../hooks/useBounds';
 
-export default function FlexBox({ item, index, isRoot, depth, dummy,
+export default function FlexBox({ item, index, isRoot, dummy,
   shouldFix, setShouldFix, nodeKey, treeOp, activeNodeKey, setActiveNodeKey }) {
 
-  const { style, boxes, camouflage } = item;
+  const { style, nodes, camouflage } = item;
 
   const [bound, ref, updateBound] = useBounds();
   const [mouseDownBound, setMouseDownBound] = useState(bound);
@@ -128,13 +128,12 @@ export default function FlexBox({ item, index, isRoot, depth, dummy,
       style={style}
     >
       {
-        boxes &&
-        boxes.map((item, index) =>
+        nodes &&
+        nodes.map((item, index) =>
           <FlexBox
-            key={`box-${depth + 1}-${index}`}
+            key={`${nodeKey}${index}`}
             index={index}
             item={item}
-            depth={depth + 1}
             nodeKey={`${nodeKey}${index}`}
             treeOp={treeOp}
             activeNodeKey={activeNodeKey}
