@@ -39,9 +39,9 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
           </p>
           <p>
             Property values related to the
-            <mark className="tag--red">main</mark>
+            <mark className="mark--red">main</mark>
             axis are marked in red and values related to the
-            <mark className="tag--blue">cross</mark>
+            <mark className="mark--blue">cross</mark>
             axis are marked in blue.
           </p>
         </>
@@ -50,27 +50,29 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
       <h3 className="title--group">Display</h3>
 
       <div className='select-group'>
-        <mark className="tag">display</mark>
+        <mark className="mark">display</mark>
         <select
           value={getValue('display', 'block')}
           onChange={(e) => setStyle(e, 'display')}
         >
           <option value='block'>block</option>
           <option value='flex'>flex</option>
+          <option value='inline-flex'>inline-flex</option>
         </select>
       </div>
       {showDesc &&
         <p className='description'>
-          Setting <mark className="tag">display</mark> to <strong>flex</strong> will
-          make this box a  <strong>flex container</strong>, changing how it's children
-          are layed out
+          Setting <mark className="mark">display</mark> to <strong>flex</strong> or <strong>inline-flex</strong> will
+          make this box a <strong>flex container</strong>, changing how it's children
+          are layed out. A <strong>flex</strong> container is a block element and
+          an <strong>inline-flex</strong> container is an inline element
         </p>
       }
 
       <h3 className="title--group">Orientation</h3>
 
       <div className='select-group'>
-        <mark className="tag--red">flex-direction</mark>
+        <mark className="mark--red">flex-direction</mark>
         <select
           value={getValue('flexDirection', '')}
           onChange={(e) => setStyle(e, 'flexDirection')}
@@ -84,12 +86,12 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
       </div>
       {showDesc &&
         <p className='description'>
-          Determines the <mark className="tag--red">main</mark> axis of the container
+          Determines the <mark className="mark--red">main</mark> axis of the container
         </p>
       }
 
       <div className='select-group'>
-        <mark className="tag">flex-wrap</mark>
+        <mark className="mark">flex-wrap</mark>
         <select
           value={getValue('flexWrap', '')}
           onChange={(e) => setStyle(e, 'flexWrap')}
@@ -97,34 +99,34 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
           <option value=''></option>
           <option value='wrap'>wrap</option>
           <option value='nowrap'>nowrap</option>
-          <option value='wrap-reverse' className='tag--blue'>wrap-reverse</option>
+          <option value='wrap-reverse' className='mark--blue'>wrap-reverse</option>
         </select>
       </div>
       {showDesc &&
         <p className='description'>
           Determines whether the items wrap to a seperate line
-          (<mark className="tag--blue">wrap-reverse</mark> will also change the
-          direction of the <mark className="tag--blue">cross</mark> axis)
+          (<mark className="mark--blue">wrap-reverse</mark> will also change the
+          direction of the <mark className="mark--blue">cross</mark> axis)
         </p>
       }
 
       <div className='select-group'>
-        <mark className="tag">flex-flow</mark>
-        <div className="property">
+        <mark className="mark">flex-flow</mark>
+        <div className="flex-property">
           {`${getValue('flexDirection', 'row')} ${getValue('flexWrap', 'nowrap')}`}
         </div>
       </div>
       {showDesc &&
         <p className='description'>
           A shorthand property that specifies
-          both <mark className="tag">flex-direction</mark> and <mark className="tag">flex-flow</mark>.
+          both <mark className="mark">flex-direction</mark> and <mark className="mark">flex-flow</mark>.
         </p>
       }
 
       <h3 className="title--group">Alignment</h3>
 
       <div className='select-group'>
-        <mark className="tag--red">justify-content</mark>
+        <mark className="mark--red">justify-content</mark>
         <select
           value={getValue('justifyContent', '')}
           onChange={(e) => setStyle(e, 'justifyContent')}
@@ -140,12 +142,12 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
       </div>
       {showDesc &&
         <p className='description'>
-            Align items by the <mark className="tag--red">main</mark> axis
+            Align items by the <mark className="mark--red">main</mark> axis
         </p>
       }
 
       <div className='select-group'>
-        <mark className="tag--blue">align-items</mark>
+        <mark className="mark--blue">align-items</mark>
         <select
           value={getValue('alignItems', '')}
           onChange={(e) => setStyle(e, 'alignItems')}
@@ -160,12 +162,12 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
       </div>
       {showDesc &&
         <p className='description'>
-          Align all items by the <mark className="tag--blue">cross</mark> axis
+          Align all items by the <mark className="mark--blue">cross</mark> axis
         </p>
       }
 
       <div className='select-group'>
-        <mark className="tag--blue">align-content</mark>
+        <mark className="mark--blue">align-content</mark>
         <select
           value={getValue('alignContent', '')}
           onChange={(e) => setStyle(e, 'alignContent')}
@@ -182,7 +184,7 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
       </div>
       {showDesc &&
         <p className='description'>
-          Align <strong>lines</strong> of items by the <mark className="tag--blue">cross</mark> axis
+          Align <strong>lines</strong> of items by the <mark className="mark--blue">cross</mark> axis
         </p>
       }
     </>

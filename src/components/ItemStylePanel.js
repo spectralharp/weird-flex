@@ -39,9 +39,9 @@ export default function ItemStylePanel({ showDesc, setShowDesc, treeOp, activeNo
           </p>
           <p>
             Property values related to the
-            <mark className="tag--red">main</mark>
+            <mark className="mark--red">main</mark>
             axis are marked in red and values related to the
-            <mark className="tag--blue">cross</mark>
+            <mark className="mark--blue">cross</mark>
             axis are marked in blue.
           </p>
         </>
@@ -50,7 +50,7 @@ export default function ItemStylePanel({ showDesc, setShowDesc, treeOp, activeNo
       <h3 className="title--group">Alignment</h3>
 
       <div className='select-group'>
-        <mark className="tag--blue">align-self</mark>
+        <mark className="mark--blue">align-self</mark>
         <select
           value={getValue('alignSelf', '')}
           onChange={(e) => setStyle(e, 'alignSelf')}
@@ -65,12 +65,12 @@ export default function ItemStylePanel({ showDesc, setShowDesc, treeOp, activeNo
       </div>
       {showDesc &&
         <p className='description'>
-          Align selected item by <mark className="tag--blue">cross</mark> axis
+          Align selected item by <mark className="mark--blue">cross</mark> axis
         </p>
       }
 
       <div className='select-group'>
-        <mark className="tag">order</mark>
+        <mark className="mark">order</mark>
         <input
           value={getValue('order', '')}
           onChange={(e) => setStyle(e, 'order')}
@@ -88,7 +88,7 @@ export default function ItemStylePanel({ showDesc, setShowDesc, treeOp, activeNo
       <h3 className="title--group">Flexibility</h3>
 
       <div className='select-group'>
-        <mark className="tag">flex-grow</mark>
+        <mark className="mark">flex-grow</mark>
         <input
           value={getValue('flexGrow', '')}
           onChange={(e) => setStyle(e, 'flexGrow')}
@@ -104,7 +104,7 @@ export default function ItemStylePanel({ showDesc, setShowDesc, treeOp, activeNo
       }
 
       <div className='select-group'>
-        <mark className="tag">flex-shrink</mark>
+        <mark className="mark">flex-shrink</mark>
         <input
           value={getValue('flexShrink', '')}
           onChange={(e) => setStyle(e, 'flexShrink')}
@@ -120,7 +120,7 @@ export default function ItemStylePanel({ showDesc, setShowDesc, treeOp, activeNo
       }
 
       <div className='select-group'>
-        <mark className="tag">flex-basis</mark>
+        <mark className="mark">flex-basis</mark>
         <input
           value={getValue('flexBasis', '')}
           onChange={(e) => setStyle(e, 'flexBasis')}
@@ -134,16 +134,16 @@ export default function ItemStylePanel({ showDesc, setShowDesc, treeOp, activeNo
       }
 
       <div className='select-group'>
-        <mark className="tag">flex</mark>
-        <div className="property">
+        <mark className="mark">flex</mark>
+        <div className="flex-property">
           {`${getValue('flexGrow', '0')} ${getValue('flexShrink', '0')} ${getValue('flexBasis', 'auto')}`}
         </div>
       </div>
       {showDesc &&
         <p className='description'>
         A shorthand property that specifies
-        <mark className="tag">flex-grow</mark>, <mark className="tag">flex-shrink</mark>,
-        and <mark className="tag">flex-basis</mark>.
+        <mark className="mark">flex-grow</mark>, <mark className="mark">flex-shrink</mark>,
+        and <mark className="mark">flex-basis</mark>.
         </p>
       }
     </>

@@ -10,7 +10,7 @@ export default function AboutPanel() {
         This is an interactive website that allows you to test out different
         CSS flexbox property.
       </p>
-        The <mark className="tag--red">main</mark> and <mark className="tag--blue">cross</mark> axis
+        The <mark className="mark--red">main</mark> and <mark className="mark--blue">cross</mark> axis
         are marked on the side of the box, and updates based on the
         flexbox properties applied.
       <h3 className="title--group">Selection</h3>
