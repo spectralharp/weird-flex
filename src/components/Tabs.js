@@ -25,7 +25,7 @@ export default function Tabs({ children, tabsRef }) {
       <section className="tabs__content">
         {children.map((child, index) => {
           if (index !== activeTab) return undefined;
-          return child.props.children;
+          return child;
         })}
       </section>
     </section>
