@@ -143,7 +143,7 @@ export default function FlexBox({ item, index, isRoot, dummy,
       }
       {camouflageComponent}
       {style ? (
-        style.display === 'flex' ?
+        (style.display === 'flex' || style.display === 'inline-flex') ?
           <>
             <div className={`flexbox__horizontal ${horizontal.main ? 'main-axis' : 'cross-axis'}`}>
               <div className={`scroll-bg ${horizontal.direction}`}>
