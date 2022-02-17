@@ -4,10 +4,12 @@ import "prism-themes/themes/prism-a11y-dark.min.css";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileCode} from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { LanguageContext } from '../context/language-context';
 
 export default function BoxCSSPanel({ activeBox }) {
 
+  const language = useContext(LanguageContext);
   const [cssCode, setCssCode] = useState(toCSS(activeBox));
   const [htmlCode, setHtmlCode] = useState(toHtml(activeBox));
 
@@ -22,10 +24,8 @@ export default function BoxCSSPanel({ activeBox }) {
 
   return (
     <>
-      <h2 className="title"><FontAwesomeIcon icon={faFileCode} /> Markup</h2>
-      <p>
-        Shows the markup for the active box
-      </p>
+      <h2 className="title"><FontAwesomeIcon icon={faFileCode} /> {language.loc.markup}</h2>
+      <p>{language.loc.markupDescription}</p>
 
       <pre>
         <code className={'language-html'}>{htmlCode}</code>

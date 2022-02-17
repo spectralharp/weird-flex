@@ -102,6 +102,8 @@ img.camouflage {
     border-bottom: 2px solid var.$darker;
     transform: scaleY(0);
     transform-origin: top;
+
+    writing-mode: horizontal-tb!important;
   }
 
   &__vertical {
@@ -114,7 +116,7 @@ img.camouflage {
     transform: scaleX(0);
     transform-origin: left;
 
-    writing-mode: vertical-rl;
+    writing-mode: vertical-rl!important;
   }
 
   &__remove-btn {

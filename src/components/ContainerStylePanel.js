@@ -1,7 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArchive } from '@fortawesome/free-solid-svg-icons';
+import { useContext } from 'react';
+import { LanguageContext } from '../context/language-context';
+import FlexMarkdown from './FlexMarkdown';
 
 export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, activeNodeKey, activeBox }) {
+
+  const language = useContext(LanguageContext);
+
   let style = null;
   if(activeBox) {
     style = activeBox.style;
@@ -27,27 +33,23 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
 
   return (
     <>
-      <h2 className="title"><FontAwesomeIcon icon={faArchive} /> Flex Container Rules</h2>
+      <h2 className="title"><FontAwesomeIcon icon={faArchive} /> {language.loc.flexContainerRules}</h2>
       <div className='toggle-group--desc'>
         <input id='containerDescCheckbox' type="checkbox" checked={showDesc} onChange={() => setShowDesc(!showDesc)}/>
-        <label htmlFor='containerDescCheckbox'>Show Description</label>
+        <label htmlFor='containerDescCheckbox'>{language.loc.showDesc}</label>
       </div>
       {showDesc &&
         <>
           <p>
-            Apply flex container CSS rules to the active box.
+            {language.loc.flexContainerRulesDesc}
           </p>
           <p>
-            Property values related to the
-            <mark className="mark--red">main</mark>
-            axis are marked in red and values related to the
-            <mark className="mark--blue">cross</mark>
-            axis are marked in blue.
+            <FlexMarkdown markdown={language.loc.axisTagDesc}/>
           </p>
         </>
       }
 
-      <h3 className="title--group">Display</h3>
+      <h3 className="title--group">{language.loc.display}</h3>
 
       <div className='select-group'>
         <mark className="mark">display</mark>
@@ -62,14 +64,11 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
       </div>
       {showDesc &&
         <p className='description'>
-          Setting <mark className="mark">display</mark> to <strong>flex</strong> or <strong>inline-flex</strong> will
-          make this box a <strong>flex container</strong>, changing how it's children
-          are layed out. A <strong>flex</strong> container is a block element and
-          an <strong>inline-flex</strong> container is an inline element
+          <FlexMarkdown markdown={language.loc.displayDesc}/>
         </p>
       }
 
-      <h3 className="title--group">Orientation</h3>
+      <h3 className="title--group">{language.loc.orientation}</h3>
 
       <div className='select-group'>
         <mark className="mark--red">flex-direction</mark>
@@ -86,7 +85,7 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
       </div>
       {showDesc &&
         <p className='description'>
-          Determines the <mark className="mark--red">main</mark> axis of the container
+          <FlexMarkdown markdown={language.loc.flexDirectionDesc}/>
         </p>
       }
 
@@ -97,16 +96,14 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
           onChange={(e) => setStyle(e, 'flexWrap')}
         >
           <option value=''></option>
-          <option value='wrap'>wrap</option>
           <option value='nowrap'>nowrap</option>
+          <option value='wrap'>wrap</option>
           <option value='wrap-reverse' className='mark--blue'>wrap-reverse</option>
         </select>
       </div>
       {showDesc &&
         <p className='description'>
-          Determines whether the items wrap to a seperate line
-          (<mark className="mark--blue">wrap-reverse</mark> will also change the
-          direction of the <mark className="mark--blue">cross</mark> axis)
+          <FlexMarkdown markdown={language.loc.flexWrapDesc}/>
         </p>
       }
 
@@ -118,12 +115,11 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
       </div>
       {showDesc &&
         <p className='description'>
-          A shorthand property that specifies
-          both <mark className="mark">flex-direction</mark> and <mark className="mark">flex-flow</mark>.
+          <FlexMarkdown markdown={language.loc.flexFlowDesc}/>
         </p>
       }
 
-      <h3 className="title--group">Alignment</h3>
+      <h3 className="title--group">{language.loc.alignment}</h3>
 
       <div className='select-group'>
         <mark className="mark--red">justify-content</mark>
@@ -142,7 +138,7 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
       </div>
       {showDesc &&
         <p className='description'>
-            Align items by the <mark className="mark--red">main</mark> axis
+          <FlexMarkdown markdown={language.loc.justifyContentDesc}/>
         </p>
       }
 
@@ -153,16 +149,16 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
           onChange={(e) => setStyle(e, 'alignItems')}
         >
           <option value=''></option>
+          <option value='stretch'>stretch</option>
           <option value='flex-start'>flex-start</option>
           <option value='flex-end'>flex-end</option>
           <option value='center'>center</option>
           <option value='baseline'>baseline</option>
-          <option value='stretch'>stretch</option>
         </select>
       </div>
       {showDesc &&
         <p className='description'>
-          Align all items by the <mark className="mark--blue">cross</mark> axis
+          <FlexMarkdown markdown={language.loc.alignItemsDesc}/>
         </p>
       }
 
@@ -173,18 +169,23 @@ export default function ContainerStylePanel({ showDesc, setShowDesc, treeOp, act
           onChange={(e) => setStyle(e, 'alignContent')}
         >
           <option value=''></option>
+          <option value='stretch'>stretch</option>
           <option value='flex-start'>flex-start</option>
           <option value='flex-end'>flex-end</option>
           <option value='center'>center</option>
           <option value='space-around'>space-around</option>
           <option value='space-between'>space-between</option>
           <option value='space-evenly'>space-evenly</option>
-          <option value='stretch'>stretch</option>
         </select>
       </div>
       {showDesc &&
         <p className='description'>
-          Align <strong>lines</strong> of items by the <mark className="mark--blue">cross</mark> axis
+          <FlexMarkdown markdown={language.loc.alignContentDesc}/>
+        </p>
+      }
+      {showDesc &&
+        <p className='description'>
+          <FlexMarkdown updateNode={treeOp.updateNode} markdown={language.loc.alignContentExample}/>
         </p>
       }
     </>

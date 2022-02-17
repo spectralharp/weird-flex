@@ -1,11 +1,14 @@
 import './FlexBox.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faThumbtack } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useBounds } from '../hooks/useBounds';
+import { LanguageContext } from '../context/language-context';
 
 export default function FlexBox({ item, index, isRoot, dummy,
   shouldFix, setShouldFix, nodeKey, treeOp, activeNodeKey, setActiveNodeKey }) {
+
+  const language = useContext(LanguageContext);
 
   const { style, nodes, camouflage } = item;
 
@@ -18,10 +21,11 @@ export default function FlexBox({ item, index, isRoot, dummy,
   function updateActive(e) {
     if (ref && ref.current === e.target) {
       if (activeNodeKey === nodeKey) {
-        const update = { width: bound.width, height: bound.height }
-        treeOp.updateNode(nodeKey,  Object.assign({}, item, {...update }));
         if (mouseDownBound.width === bound.width && mouseDownBound.height === bound.height) {
           setActiveNodeKey(null);
+        } else {
+          const update = { width: bound.width, height: bound.height }
+          treeOp.updateNode(nodeKey,  Object.assign({}, item, {...update }));
         }
       } else {
         setActiveNodeKey(nodeKey);
@@ -149,14 +153,14 @@ export default function FlexBox({ item, index, isRoot, dummy,
               <div className={`scroll-bg ${horizontal.direction}`}>
               </div>
               <div className="axis__label">
-                {bound.width > 170 && (horizontal.main ? 'main axis' : 'cross axis')}
+                {bound.width > 170 && (horizontal.main ? language.loc.mainAxis : language.loc.crossAxis)}
               </div>
             </div>
             <div className={`flexbox__vertical ${vertical.main ? 'main-axis' : 'cross-axis'}`}>
               <div className={`scroll-bg ${vertical.direction}`}>
               </div>
               <div className="axis__label">
-                {bound.height > 170 && (vertical.main ? 'main axis' : 'cross axis')}
+                {bound.height > 170 && (vertical.main ? language.loc.mainAxis : language.loc.crossAxis)}
               </div>
             </div>
           </> :

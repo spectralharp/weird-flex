@@ -3,11 +3,15 @@ import Logo from '../images/logo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-export default function Navbar() {
+export default function Navbar({ languageSelect }) {
   return (
     <nav className='nav'>
       <h1 className='flexing-title'><span className="flexee">Weird Flex</span> <span className="muscle">💪</span></h1>
+
       <ul className='nav__links'>
+        <li>
+          { languageSelect }
+        </li>
         <li className='nav__link'>
           <a href="https://github.com/spectralharp/weird-flex-react">
             <FontAwesomeIcon icon={faGithub} />
